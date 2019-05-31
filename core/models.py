@@ -1,5 +1,6 @@
 from django.db import models
 from atracoes.models import Atracao
+from comentarios.models import Comentario
 
 
 # Create your models here.
@@ -10,6 +11,10 @@ class PontoTuristico(models.Model):
 
     #Criando o relacionamento do core com Atracao
     atracoes = models.ManyToManyField(Atracao)
+    #Criando o relacionamento do core com Comentario
+    comentarios = models.ManyToManyField(Comentario)
+
+
 
     def __str__(self):
         return self.nome
