@@ -1,6 +1,7 @@
 from django.db import models
 from atracoes.models import Atracao
 from comentarios.models import Comentario
+from avaliacoes.models import Avaliacao
 
 
 # Create your models here.
@@ -13,6 +14,8 @@ class PontoTuristico(models.Model):
     atracoes = models.ManyToManyField(Atracao)
     #Criando o relacionamento do core com Comentario
     comentarios = models.ManyToManyField(Comentario)
+    #Criando o relacionamento do core com Avaliacao
+    avaliacoes = models.ManyToManyField(Avaliacao)
 
 
 
