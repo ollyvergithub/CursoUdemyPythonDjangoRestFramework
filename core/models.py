@@ -18,9 +18,7 @@ class PontoTuristico(models.Model):
     #Criando o relacionamento do core com Avaliacao
     avaliacoes = models.ManyToManyField(Avaliacao)
     #Criando o relacionamento do core com Endereco
-    enderecos = models.ForeignKey(Endereco, on_delete=models.CASCADE)
-
-
+    enderecos = models.ForeignKey(Endereco, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.nome
