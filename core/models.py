@@ -2,6 +2,7 @@ from django.db import models
 from atracoes.models import Atracao
 from comentarios.models import Comentario
 from avaliacoes.models import Avaliacao
+from enderecos.models import Endereco
 
 
 # Create your models here.
@@ -16,6 +17,8 @@ class PontoTuristico(models.Model):
     comentarios = models.ManyToManyField(Comentario)
     #Criando o relacionamento do core com Avaliacao
     avaliacoes = models.ManyToManyField(Avaliacao)
+    #Criando o relacionamento do core com Endereco
+    enderecos = models.ForeignKey(Endereco, on_delete=models.CASCADE)
 
 
 
