@@ -1,4 +1,6 @@
 from django.db import models
+from atracoes.models import Atracao
+
 
 # Create your models here.
 class PontoTuristico(models.Model):
@@ -6,7 +8,8 @@ class PontoTuristico(models.Model):
     descricao =  models.TextField()
     aprovado = models.BooleanField(default=False)
 
-
+    #Criando o relacionamento do core com Atracao
+    atracoes = models.ManyToManyField(Atracao)
 
     def __str__(self):
         return self.nome
