@@ -16,6 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+# Django Rest Framework
+from django.conf.urls import url, include
+from rest_framework import routers, serializers, viewsets
+from core.api.viewsets import PontoTuristicoViewSet
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'pontoturistico',PontoTuristicoViewSet)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # Django Rest Framework
+    path('', include(router.urls))
 ]
