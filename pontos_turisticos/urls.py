@@ -18,6 +18,11 @@ from django.urls import path
 
 # Django Rest Framework
 from django.conf.urls import url, include
+
+# Servindo arquivos estáticos
+from django.conf import settings
+from django.conf.urls.static import static
+
 from rest_framework import routers, serializers, viewsets
 from core.api.viewsets import PontoTuristicoViewSet
 from atracoes.api.viewsets import AtracaoViewSet
@@ -41,4 +46,4 @@ urlpatterns = [
 
     # Django Rest Framework
     path('', include(router.urls))
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # Servindo arquivos estáticos

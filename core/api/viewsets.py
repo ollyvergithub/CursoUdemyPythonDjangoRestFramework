@@ -21,22 +21,30 @@ class PontoTuristicoViewSet(ModelViewSet):
 
     # Sobescrevendo o método list() do ModelViewSet padrão
     def list(self, request, *args, **kwargs):
-        return Response({'teste': 123})
+        #return Response({'teste': 123})
+        # Chamando os métodos padrões no ModelViewSet
+        return super(PontoTuristicoViewSet, self).list(request, *args, **kwargs)
 
     def create(self, request, *args, **kwargs):
-        return Response({'Hello':request.data['nome']})
+        #return Response({'Hello':request.data['nome']})
+        # Chamando os métodos padrões no ModelViewSet
+        return super(PontoTuristicoViewSet, self).create(request, *args, **kwargs)
 
     def destroy(self, request, *args, **kwargs):
-        pass
+        # Chamando os métodos padrões no ModelViewSet
+        return super(PontoTuristicoViewSet, self).destroy(request, *args, **kwargs)
 
     def retrieve(self, request, *args, **kwargs):
-        pass
+        # Chamando os métodos padrões no ModelViewSet
+        return super(PontoTuristicoViewSet, self).retrieve(request, *args, **kwargs)
 
     def update(self, request, *args, **kwargs):
-        pass
+        # Chamando os métodos padrões no ModelViewSet
+        return super(PontoTuristicoViewSet, self).update(request, *args, **kwargs)
 
     def partial_update(self, request, *args, **kwargs):
-        pass
+        # Chamando os métodos padrões no ModelViewSet
+        return super(PontoTuristicoViewSet, self).partial_update(request, *args, **kwargs)
 
     # Criando uma action personalizada para um ponto turistico unico
     @action(detail=True, methods=['get'])
