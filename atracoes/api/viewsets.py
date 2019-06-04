@@ -17,3 +17,5 @@ class AtracaoViewSet(ModelViewSet):
     filter_backends = (DjangoFilterBackend,)
     filterset_fields = ('nome', 'descricao')
 
+
+
