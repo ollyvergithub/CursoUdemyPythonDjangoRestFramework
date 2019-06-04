@@ -9,5 +9,11 @@ from core.models import PontoTuristico
 from .serializers import PontoTuristicoSerializer
 
 class PontoTuristicoViewSet(ModelViewSet):
-    queryset = PontoTuristico.objects.all()
+
+    # Com a chamada do método get_queryset
+    #queryset = PontoTuristico.objects.filter(aprovado=True)
+    # Sobescrevendo o método get_queryset. Aqui filtramos e retornamos um iterable
+    def get_queryset(self):
+        return PontoTuristico.objects.filter(aprovado=True)
+
     serializer_class = PontoTuristicoSerializer

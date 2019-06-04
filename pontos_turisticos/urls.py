@@ -27,7 +27,10 @@ from avaliacoes.api.viewsets import AvaliacaoViewSet
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register(r'pontoturistico',PontoTuristicoViewSet)
+# Com a chamada do método get_queryset - Necessário atribuir o base_name com o nome do Model.
+#router.register(r'pontoturistico',PontoTuristicoViewSet)
+router.register(r'pontoturistico',PontoTuristicoViewSet, base_name='PontoTuristico')
+
 router.register(r'atracoes',AtracaoViewSet)
 router.register(r'enderecos',EnderecosViewSet)
 router.register(r'comentarios',ComentarioViewSet)
