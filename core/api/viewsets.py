@@ -26,6 +26,9 @@ class PontoTuristicoViewSet(ModelViewSet):
     '''
     filter_backends = (SearchFilter,)
     search_fields = ('nome', 'descricao')
+    # Alterando o campo padrão de busca, que era ID(pk), para o que quisermos, nesse caso escolhemos o nome
+    # O problema é que o resultado desta busca tem que ser único!!
+    lookup_field = 'nome'
 
 
     # Com a chamada do método get_queryset
