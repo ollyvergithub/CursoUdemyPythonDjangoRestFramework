@@ -4,8 +4,10 @@
 A viewset that provides default `create()`, `retrieve()`, `update()`,
 `partial_update()`, `destroy()` and `list()` actions.
 """
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from core.models import PontoTuristico
@@ -13,6 +15,10 @@ from .serializers import PontoTuristicoSerializer
 
 class PontoTuristicoViewSet(ModelViewSet):
     serializer_class = PontoTuristicoSerializer
+
+    # Setando permissões nesse Endpoint
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication,)
 
     #Django Search Filter
     # Ver venv/Lib/site-packages/rest_framework/filters.py
