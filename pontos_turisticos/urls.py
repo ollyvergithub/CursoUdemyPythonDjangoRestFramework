@@ -30,6 +30,9 @@ from enderecos.api.viewsets import EnderecosViewSet
 from comentarios.api.viewsets import ComentarioViewSet
 from avaliacoes.api.viewsets import AvaliacaoViewSet
 
+# Autenticacaão
+from rest_framework.authtoken import views
+
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 # Com a chamada do método get_queryset - Necessário atribuir o base_name com o nome do Model.
@@ -45,5 +48,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Django Rest Framework
-    path('', include(router.urls))
+    path('', include(router.urls)),
+
+    # Autenticação
+    path('api-token-auth/', views.obtain_auth_token),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # Servindo arquivos estáticos
