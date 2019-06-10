@@ -1,5 +1,6 @@
 # Django Rest Framework
 # Serializers define the API representation.
+from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer
 from core.models import PontoTuristico
 from atracoes.api.serializers import AtracoesSerializer
@@ -11,8 +12,17 @@ class PontoTuristicoSerializer(ModelSerializer):
     atracoes = AtracoesSerializer(many=True)
     # Aqui um relacionamento simples
     enderecos = EnderecosSerializer()
+    # 33 - Incluindo informações adicionais com SerializerMethodField e properties
+    descricao_completa = SerializerMethodField()
 
     class Meta:
         model = PontoTuristico
         fields = ('id','nome', 'descricao', 'aprovado', 'foto',
-                  'enderecos', 'atracoes', 'comentarios', 'avaliacoes')
+                  'enderecos', 'atracoes', 'comentarios', 'avaliacoes',
+                  'descricao_completa', 'descricao_completa2')
+
+    # 33 - Incluindo informações adicionais com SerializerMethodField e properties
+    def get_descricao_completa(self, obj):
+        return '%s - %s' % (obj.nome, obj.descricao)
+
+
