@@ -7,8 +7,7 @@ A viewset that provides default `create()`, `retrieve()`, `update()`,
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, IsAuthenticatedOrReadOnly, DjangoModelPermissions
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from core.models import PontoTuristico
@@ -18,7 +17,12 @@ class PontoTuristicoViewSet(ModelViewSet):
     serializer_class = PontoTuristicoSerializer
 
     # Setando permissões nesse Endpoint
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAdminUser,)
+    # Permissoes concedidas direto no admin do Django
+    #permission_classes = (DjangoModelPermissions,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
     authentication_classes = (TokenAuthentication,)
 
     #Django Search Filter
@@ -35,7 +39,7 @@ class PontoTuristicoViewSet(ModelViewSet):
     search_fields = ('nome', 'descricao')
     # Alterando o campo padrão de busca, que era ID(pk), para o que quisermos, nesse caso escolhemos o nome
     # O problema é que o resultado desta busca tem que ser único!!
-    lookup_field = 'nome'
+    # lookup_field = 'nome'
 
 
     # Com a chamada do método get_queryset
